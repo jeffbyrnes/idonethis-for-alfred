@@ -32,8 +32,8 @@ class FileCache
     FileUtils.mkdir_p @root_dir
   end
 
-  # Set a cache value for the given key. If the cache contains an existing value for
-  # the key it will be overwritten.
+  # Set a cache value for the given key. If the cache contains an existing value
+  # for the key it will be overwritten.
   def set(key, value)
     f = File.open(get_path(key), 'w')
     Marshal.dump(value, f)
@@ -59,9 +59,9 @@ class FileCache
     end
   end
 
-  # Return the value for the specified key from the cache if the key exists in the
-  # cache, otherwise set the value returned by the block. Returns the value if found
-  # or the value from calling the block that was set.
+  # Return the value for the specified key from the cache if the key exists in
+  # the cache, otherwise set the value returned by the block. Returns the value
+  # if found or the value from calling the block that was set.
   def get_or_set(key)
     value = get key
     return value if value
