@@ -167,7 +167,7 @@ print begin
         'title'    => entry['body'],
         'subtitle' => 'Mark as done',
         'arg'      => entry['hash_id'],
-        'valid'    => (entry['status'] == 'goal' ? true : false),
+        'valid'    => (entry['status'] == 'goal' ? true : false)
       } if entry['status'] == 'goal' && entry['completed_on'].nil?
     end
 
@@ -176,7 +176,7 @@ print begin
       formatted_for_alfred['items'] << {
         'title'    => 'No goals set!',
         'subtitle' => 'Looks like you should set some goals',
-        'valid'    => false,
+        'valid'    => false
       }
     else
       list = formatted_for_alfred.to_json
@@ -194,7 +194,7 @@ rescue StandardError => e
     'items' => [
       {
         'title'    => 'Error',
-        'subtitle' => e.message,
+        'subtitle' => e.message
       }
     ]
   }.to_json
