@@ -121,6 +121,7 @@ end
 
 api_token   = ENV['api_token']
 team_id     = ENV['team_id']
+email_address = ENV['email']
 api_version = 'v2'
 base_uri    = "https://app.idonethis.com/api/#{api_version}"
 
@@ -168,7 +169,9 @@ print begin
         'subtitle' => 'Mark as done',
         'arg'      => entry['hash_id'],
         'valid'    => (entry['status'] == 'goal' ? true : false)
-      } if entry['status'] == 'goal' && entry['completed_on'].nil?
+      } if entry['user']['email_address'] == email_address &&
+           entry['status'] == 'goal' && 
+           entry['completed_on'].nil?
     end
 
     # Show a nice message if no goals are returned
